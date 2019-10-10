@@ -1,0 +1,55 @@
+@app.route('/') 
+#"CADA PAGINA DO MENU DO SITE DEVERAR TER UMA ROTA DESTA, INDICADA PELO SEU NOME"
+
+#"POR EXEMPLO A PAGINA INDEX:"
+
+def index():
+    return render_template("index.html")
+
+if __name__ == '__main__':
+    app.run(debug=True)
+#"SEMPRE QUANDO SE CRIA UMA PAGINA TEM QUE DEFINIR O NOME DA PAGINA E O MEUAPP.RUN(DEBUG=TRUE)"
+
+from flask_sqlalchemy import SQLAlchemy
+
+
+#"CONFIGURAÇÃO DE ONDE O MEU ARQUIVO VAI ESTA"
+
+app = Flask(__name__)
+
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///BancoDeDados.db'
+
+db = SQLAlchemy(app)
+
+class Usuario(db.Model): 
+
+	
+	id = db.Column(db.Integer , primary_key=True)
+	usuario = db.Column(db.String(40), unique=True, nullable=False) 
+	senha = db.Column(db.String(12),nullable=False)
+	email = db.Column(db.String(200), unique=True, nullable=False)
+
+	def __repr__(self): #METODO
+
+#UMA FUNÇÃO DENTRO DA CLASS NAO RECCEBE MAIS O NOME DE DEF, E SIM METODO.
+
+		return "<User %r>" & self.usuario
+
+#UTILIZANDO O COMANDO PYTHON / DENTRO DO PYTHON / EXECUTE O SEGUINTE COMANDO:
+
+pip install SQLAlchemy
+from meuapp.py import db
+
+# AINDA DENTRO DO PYTHON/ DIGITE:
+
+db.create(all)
+
+
+#Apos isso, vanos abrir o nosso banco de dados "BancoDeDados" atravez do programa "sqlitebrowser.org"
+
+
+
+
+
+
+
